@@ -8,8 +8,8 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">
               <span className="footer-pulse">⚡</span>
-              <span className="footer-dev">Dev</span>
-              <span className="footer-name">Pulse</span>
+              <span className="footer-dev">Curated</span>
+              <span className="footer-name">Hire</span>
             </h3>
             <p className="footer-tagline">
               Human-posted jobs from real companies. AI-curated, spam-free.
@@ -35,10 +35,10 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {currentYear} DevPulse. All rights reserved.
+            © {currentYear} CuratedHire. All rights reserved.
           </p>
           <p className="footer-credit">
-            Built with ❤️ by <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">MK Labs</a>
+            Built with ❤️ by <a href="https://github.com/mkswami01" target="_blank" rel="noopener noreferrer">MK Labs</a>
           </p>
         </div>
       </div>

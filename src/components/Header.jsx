@@ -11,8 +11,8 @@ const Header = ({ jobCount }) => {
           <div className="brand">
             <h1 className="brand-title">
               <span className="brand-pulse">⚡</span>
-              <span className="brand-dev">Dev</span>
-              <span className="brand-name">Pulse</span>
+              <span className="brand-dev">Curated</span>
+              <span className="brand-name">Hire</span>
             </h1>
             <p className="brand-subtitle">Real jobs from real companies</p>
           </div>
