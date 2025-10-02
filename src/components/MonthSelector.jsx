@@ -5,7 +5,6 @@ const MonthSelector = () => {
   const navigate = useNavigate()
 
   const months = [
-    { name: 'September', path: 'september' },
     { name: 'October', path: 'october' }
   ]
 

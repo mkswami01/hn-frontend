@@ -3,20 +3,33 @@ import { useState } from "react"
 const JobCard = ({ job }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [showToast, setShowToast] = useState(false)
 
   // Handle primary application URL (first in the list)
-  const handlePrimaryApply = () => {
+  const handlePrimaryApply = async () => {
     const primaryUrl = job.application_url && job.application_url[0]
     if (primaryUrl) {
       window.open(primaryUrl, '_blank')
     } else if (job.email) {
-      window.location.href = `mailto:${job.email}?subject=Application for ${job.title}`
+      // Copy email to clipboard instead of opening mail app
+      await handleCopyEmail()
     }
   }
 
   // Handle secondary application URLs
   const handleSecondaryApply = (url) => {
     window.open(url, '_blank')
+  }
+
+  // Handle email copy to clipboard
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(job.email)
+      setShowToast(true)
+      setTimeout(() => setShowToast(false), 3000) // Hide toast after 3 seconds
+    } catch (err) {
+      console.error('Failed to copy email:', err)
+    }
   }
 
   const getWorkTypeStyle = (workType) => {
@@ -61,7 +74,7 @@ const JobCard = ({ job }) => {
           onClick={handlePrimaryApply}
           disabled={!job.application_url?.length && !job.email}
         >
-          {job.application_url?.length ? 'Apply Now' : job.email ? 'Email Apply' : 'Contact Company'}
+          {job.application_url?.length ? 'Apply Now' : job.email ? '📋 Copy Email' : 'Contact Company'}
         </button>
 
         {/* Show dropdown for additional application URLs */}
@@ -155,13 +168,24 @@ const JobCard = ({ job }) => {
               {job.email && (
                 <div className="modal-email-option">
                   <p>Or apply via email:</p>
-                  <a href={`mailto:${job.email}?subject=Application for ${job.title}`}>
-                    {job.email}
-                  </a>
+                  <button
+                    className="email-copy-button"
+                    onClick={handleCopyEmail}
+                  >
+                    <span className="email-text">{job.email}</span>
+                    <span className="copy-icon">📋 Copy</span>
+                  </button>
                 </div>
               )}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="toast-notification">
+          ✓ Email copied to clipboard!
         </div>
       )}
     </div>
