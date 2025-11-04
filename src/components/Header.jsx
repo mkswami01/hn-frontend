@@ -1,8 +1,7 @@
-const Header = ({ jobCount }) => {
-  const currentDate = new Date().toLocaleDateString('en-US', {
-    month: 'long',
-    year: 'numeric'
-  })
+const Header = ({ jobCount, selectedMonth }) => {
+  const displayDate = selectedMonth
+    ? `${selectedMonth.charAt(0).toUpperCase() + selectedMonth.slice(1)} ${new Date().getFullYear()}`
+    : new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
 
   return (
     <header className="header">
@@ -17,7 +16,7 @@ const Header = ({ jobCount }) => {
             <p className="brand-subtitle">Real jobs from real companies</p>
           </div>
           <div className="header-meta">
-            <div className="date-badge">{currentDate}</div>
+            <div className="date-badge">{displayDate}</div>
             <div className="job-count">{jobCount} opportunities</div>
           </div>
         </div>

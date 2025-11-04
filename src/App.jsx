@@ -41,7 +41,7 @@ function App() {
     const fetchJobs = async () => {
       try {
         setLoading(true)
-        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
+        const API_URL = import.meta.env.VITE_API_URL || "https://hn-backend.onrender.com"
 
         // Build URL with month parameter if provided
         const url = month
@@ -97,7 +97,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header jobCount={filteredJobs.length} />
+      <Header jobCount={filteredJobs.length} selectedMonth={month} />
       <main className="main">
         <div className="container">
           <div className="controls-bar">

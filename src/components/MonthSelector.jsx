@@ -5,7 +5,8 @@ const MonthSelector = () => {
   const navigate = useNavigate()
 
   const months = [
-    { name: 'October', path: 'october' }
+    { name: 'October', path: 'october' },
+    { name: 'November', path: 'november' }
   ]
 
   const currentMonth = new Date().toLocaleDateString('en-US', { month: 'long' }).toLowerCase()
