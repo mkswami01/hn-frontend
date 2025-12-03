@@ -1,7 +1,7 @@
+import { formatMonthDisplay } from '../utils/dateUtils'
+
 const Header = ({ jobCount, selectedMonth }) => {
-  const displayDate = selectedMonth
-    ? `${selectedMonth.charAt(0).toUpperCase() + selectedMonth.slice(1)} ${new Date().getFullYear()}`
-    : new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+  const displayDate = formatMonthDisplay(selectedMonth)
 
   return (
     <header className="header">

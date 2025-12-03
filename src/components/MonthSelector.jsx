@@ -1,15 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
+import { getAvailableMonths, getCurrentMonthFormatted } from '../utils/dateUtils'
 
 const MonthSelector = () => {
   const { month } = useParams()
   const navigate = useNavigate()
 
-  const months = [
-    { name: 'October', path: 'october' },
-    { name: 'November', path: 'november' }
-  ]
-
-  const currentMonth = new Date().toLocaleDateString('en-US', { month: 'long' }).toLowerCase()
+  const months = getAvailableMonths()
+  const currentMonth = getCurrentMonthFormatted()
   const selectedMonth = months.find(m => m.path === month) || months.find(m => m.path === currentMonth)
 
   const handleMonthChange = (e) => {
